@@ -1,0 +1,34 @@
+<form [formGroup]="forma" (ngSubmit)="guardarPaciente()">
+
+    <button class="btn btn-default">Guardar</button>
+
+    <!-- Aca empieza la primer row -->
+    <div class="row">
+        <div class="col-sm-6">
+            <label>Estado</label>
+            <select formControlName="estado" name="estado" class="form-control">
+                <option value="1">ACTIVO</option>
+                <option value="2">INACTIVO</option>
+                <option value="3">OBITO</option>  
+            </select>
+            <label>Nombres</label><input formControlName="nombres" name="nombres" class="form-control" type="text">
+            <label>Apellidos</label><input formControlName="apellidos" name="apellidos" class="form-control" type="text">
+            <label>Fecha de Nacimiento</label><input formControlName="fnac" name="fnac" class="form-control" type="date">
+            <label>Sexo</label><select formControlName="sexo" name="sexo" class="form-control">
+                                    <option value="0">FEMENINO</option>
+                                    <option value="1">MASCULINO</option>
+                                </select>
+            <label>Numero de Documento</label><input formControlName="nro_documento" name="nro_documento" class="form-control" type="text">
+            <label>Nacionalidad</label><input formControlName="nacionalidad" name="nacionalidad" class="form-control" type="text">
+        </div>
+        <div class="col-sm-6">
+            <label>Telefono</label><input formControlName="telefono" name="telefono" class="form-control" type="text">
+            <label>Celular</label><input formControlName="celular" name="celular" class="form-control" type="text">
+            <label>Email</label><input formControlName="email" name="email" class="form-control" type="text">
+            <label>Cobertura</label><input formControlName="cobertura" name="cobertura" class="form-control" type="text">
+            <label>Afiliado</label><input formControlName="afiliado" name="afiliado" class="form-control" type="text">
+            <label>Contacto</label><input formControlName="contacto" name="contacto" class="form-control" type="text">
+            <label>Domicilio</label><input formControlName="domicilio" name="domicilio" class="form-control" type="text">
+        </div>
+    </div>
+</form>

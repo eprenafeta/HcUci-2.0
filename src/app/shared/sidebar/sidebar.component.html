@@ -1,0 +1,15 @@
+<div id="navigation">
+    <ul class="nav" id="side-menu">
+        <li class="active">
+            <a href="index.html"> <span class="nav-label">Dashboard</span> <span class="label label-success pull-right">v.1</span> </a>
+        </li>
+        <li *ngFor="let menu of _sidebar.menu">
+            <a href="#"><span class="nav-label">{{menu.titulo}}</span><span class="fa arrow"></span> </a>
+            <ul class="nav nav-second-level">
+                <li *ngFor="let submenu of menu.submenu"><a routerLinkActive="active" [routerLink]="[ submenu.url]">{{submenu.titulo}}</a></li>
+            </ul>
+        </li>
+
+    </ul>
+
+</div>

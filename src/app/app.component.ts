@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SidebarService, PacienteService } from './services/service.index';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-root',
