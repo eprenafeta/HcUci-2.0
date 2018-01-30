@@ -1,6 +1,7 @@
 
 export class Paciente {
     constructor(
+        public _id: String,
         public estado: string,
         public nombres: string,
         public apellidos: string,

@@ -1,6 +1,12 @@
 <div class="row">
 
-    <button [routerLink]="['/paciente','nuevo']" type="button" class="btn btn-primary"><i class="fa fa-user" aria-hidden="true"></i> Nuevo Paciente </button>
+
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <button [routerLink]="['/paciente','nuevo']" type="button" class="btn btn-primary"><i class="fa fa-user" aria-hidden="true"></i> Nuevo Paciente </button>
+    </div>
+
+
+
 
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <div class="input-group">
@@ -25,7 +31,7 @@
                     <tbody>
                         <tr *ngFor="let paciente of pacientes">
                             <td>
-                                {{paciente.apellidos}}, {{paciente.nombres }}
+                                {{paciente.apellidos}}, {{paciente.nombres }}, {{paciente.nacionalidad.Pais}}({{paciente.nacionalidad.Codigo}})
                             </td>
                             <td>
                                 <button [routerLink]="['/paciente', paciente._id]" type="button" class="btn btn-info"> <i class="fa fa-edit" aria-hidden="true"></i> </button>
@@ -40,4 +46,10 @@
             </div>
         </div>
     </div>
+
+
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+    </div>
+
 </div>

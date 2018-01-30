@@ -15,11 +15,14 @@ import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PacienteComponent } from './pages/pacientes/paciente.component';
+import { InternacionComponent } from './pages/internacion/internacion.component';
+import {NgDatepickerModule} from 'ng2-datepicker';
+import {Ng2EventsModule} from 'ng2-events';
 
 // Servicios
 import { ServiceModule } from './services/service.module';
 import { PacienteModule } from './modules/paciente/paciente.module';
-
+import { PrescripcionComponent } from './pages/internacion/prescripcion/prescripcion.component';
 
 
 
@@ -32,18 +35,23 @@ import { PacienteModule } from './modules/paciente/paciente.module';
     HeaderComponent,
     SidebarComponent,
     DashboardComponent,
-    PacienteComponent
+    PacienteComponent,
+    InternacionComponent,
+    PrescripcionComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTES,
     RouterModule,
     ReactiveFormsModule,
+    Ng2EventsModule,
     FormsModule,
     CommonModule,
+    NgDatepickerModule,
     PacienteModule,
     ServiceModule
   ],
+  exports: [Ng2EventsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

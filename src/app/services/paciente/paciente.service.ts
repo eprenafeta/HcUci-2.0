@@ -12,6 +12,23 @@ export class PacienteService {
   constructor(public http: HttpClient) {
     console.log('SERVICIO DE PACIENTE LISTO');
    }
+  cargaPaises(){
+    let url = 'http://localhost:3000/datos_select/paises';
+    return this.http.get(url).pipe( map(
+      (resp: any) => {
+        return resp.paises;
+       
+    }));
+  }
+  cargaCobertura(){
+    let url = 'http://localhost:3000/datos_select/coberturas';
+    return this.http.get(url).pipe( map(
+      (resp) => {
+        return resp;
+       
+    }));
+
+  }
 
   buscarPaciente(variable: String){
     let url = 'http://localhost:3000/busqueda/pacientes/' + variable;
@@ -38,12 +55,20 @@ export class PacienteService {
         return resp;
       }
     ));
-
   }
 
   guardarPaciente(paciente: Paciente) {
-    let url = 'http://localhost:3000/paciente';
-    return this.http.post(url, paciente);
+    console.log(paciente);
+    if(paciente._id){ 
+      console.log("acutalizando");
+      let url = 'http://localhost:3000/paciente/'+paciente._id;
+      return this.http.put(url, paciente);
+    }else {
+      console.log("Creando!");
+      let url = 'http://localhost:3000/paciente';
+      return this.http.post(url, paciente);
+    }
+    
   }
 
   borrarPaciente(id){

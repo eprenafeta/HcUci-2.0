@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-xs-11 col-sm-11 col-md-1 col-lg-11">
+
+        <div class="panel panel-primary" ngShow="ingreso">
+            <div class="panel-heading">
+                <h3 class="panel-title">Internación</h3>
+            </div>
+            <div class="panel-body">
+                <form [formGroup]="formInternacion" (ngSubmit)="guardaInternacion()">
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="panel panel-success" [hidden]="!ingreso">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Ingreso: {{internacion.ingreso_cie10.descripcion}}</h3>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="row">
+                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                            <label>Fecha:</label>
+                                            <ng-datepicker [(ngModel)]="internacion.ingreso_fecha" formControlName="ingreso_fecha" name="ingreso_fecha"></ng-datepicker>
+                                        </div>
+                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                            <label>Diagnóstico CIE10:</label>
+                                            <div class="row">
+                                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                    <input type="text" #input_ingreso ng-event (keyup)="cargaCie10s(input_ingreso.value)" class="form-control" placeholder="Busqueda CIE10 ....">
+                                                </div>
+                                                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                    <select [(ngModel)]="internacion.ingreso_cie10._id" formControlName="ingreso_cie10" class="form-control" style="width:100%">
+                                                <option value="{{cie10._id}}" *ngFor="let cie10 of cie10s">{{cie10.descripcion}}</option>
+                                            </select>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                            <label>Motivo Internación:</label>
+                                            <input [(ngModel)]="internacion.ingreso_motivo_internacion" formControlName="ingreso_motivo_internacion" name="ingreso_motivo_internacion" class="form-control" type="text">
+                                        </div>
+
+                                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                            <label>SAPS3</label>
+                                            <input [(ngModel)]="internacion.ingreso_saps3" formControlName="ingreso_saps3" name="ingreso_saps3" class="form-control" type="number">
+                                        </div>
+                                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                            <label>APACHE2</label>
+                                            <input [(ngModel)]="internacion.ingreso_apache2" formControlName="ingreso_apache2" name="ingreso_apache2" class="form-control" type="number">
+                                        </div>
+                                    </div>
+
+                                    <label>Enfermedad Actual:</label>
+                                    <textarea [(ngModel)]="internacion.ingreso_enfermedad_actual" formControlName="ingreso_enfermedad_actual" name="ingreso_enfermedad_actual" class="form-control" style="height:80px"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{internacion.epicrisis_cie10.descripcion}}
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="panel panel-success" [hidden]="ingreso">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Epicrisis</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <label>epicrisis_fecha</label>
+                                    <ng-datepicker [(ngModel)]="internacion.epicrisis_fecha" formControlName="epicrisis_fecha" name="epicrisis_fecha"></ng-datepicker>
+                                    <label>epicrisis_detalle</label>
+                                    <input [(ngModel)]="internacion.epicrisis_detalle" formControlName="epicrisis_detalle" name="epicrisis_detalle" class="form-control" type="text">
+                                    <label>epicrisis_cie10</label>
+                                    <input type="text" #input_epicrisis (keyup)="cargaCie10s(input_epicrisis.value)" class="form-control">
+                                    <select [(ngModel)]="internacion.epicrisis_cie10._id" formControlName="epicrisis_cie10" class="form-control" style="width:100%">
+                                        <option value="{{internacion.epicrisis_cie10._id}}">{{internacion.epicrisis_cie10.descripcion}}</option>
+                                        <option value="{{cie10._id}}" *ngFor="let cie10 of cie10s">{{cie10.descripcion}}</option>
+                                   </select>
+                                    <label>epicrisis_complicaciones</label>
+                                    <input [(ngModel)]="internacion.epicrisis_complicaciones" formControlName="epicrisis_complicaciones" name="epicrisis_complicaciones" class="form-control" type="text">
+                                    <label>epicrisis_estado</label>
+                                    <input [(ngModel)]="internacion.epicrisis_estado" formControlName="epicrisis_estado" name="epicrisis_estado" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class="btn btn-primary"><i class="fa fa-save" aria-hidden="true"></i> Guardar</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

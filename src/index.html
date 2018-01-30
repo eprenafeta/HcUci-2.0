@@ -14,6 +14,11 @@
 
     <link rel="stylesheet" href="assets/vendor/animate.css/animate.css" />
     <link rel="stylesheet" href="assets/vendor/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/vendor/select2-3.5.2/select2.css" />
+    <link rel="stylesheet" href="assets/vendor/select2-bootstrap/select2-bootstrap.css" />
+    <link rel="stylesheet" href="assets/vendor/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" />
+
+
 
     <!-- App styles -->
     <link rel="stylesheet" href="assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
@@ -40,10 +45,18 @@
     <script src="assets/vendor/iCheck/icheck.min.js"></script>
     <script src="assets/vendor/peity/jquery.peity.min.js"></script>
     <script src="assets/vendor/sparkline/index.js"></script>
+    <script src="assets/vendor/select2-3.5.2/select2.min.js"></script>
+
 
     <!-- App scripts -->
     <script src="assets/scripts/homer.js"></script>
     <script src="assets/scripts/charts.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
 </body>
 
 </html>

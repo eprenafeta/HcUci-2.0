@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PacienteService } from '../../services/service.index';
+import  {swal} from 'sweetalert';
 
 
 @Component({
@@ -26,13 +27,30 @@ export class PacientesComponent implements OnInit {
 
 
   borrarPaciente(valor){
-    this._pacienteService.borrarPaciente(valor).subscribe( () => this.cargarPacientes() );
+    swal({
+      title: "Esta seguro que desea borrar el siguien paciente?",
+      text: "Una vez eliminado, no se podrán deshacer los cambios!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        this._pacienteService.borrarPaciente(valor).subscribe( () => this.cargarPacientes() );
+        swal("El paciente ha sido eliminado", {
+          icon: "success",
+        });
+      } 
+    });
+
+    
   }
 
 
   cargarPacientes() {
     this._pacienteService.cargarPacientes().subscribe(pacientes => {
       this.pacientes = pacientes;
+      console.log(pacientes);
     });
   }
 

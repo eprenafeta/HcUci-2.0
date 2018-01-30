@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidebarService, PacienteService } from './service.index';
+import { SidebarService, PacienteService, InternacionService, PrescripcionService } from './service.index';
 import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   imports: [
@@ -10,7 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     PacienteService,
-    SidebarService
+    PrescripcionService,
+    SidebarService,
+    InternacionService
   ],
   declarations: []
 })

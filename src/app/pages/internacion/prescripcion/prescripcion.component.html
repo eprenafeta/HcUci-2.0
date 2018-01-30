@@ -1,0 +1,177 @@
+<div class="row">
+
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+    </div>
+
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+        <div class="alert alert-danger" role="alert" *ngIf="!prescripcion.validado">
+            Mensaje: Prescripción no Validada.
+        </div>
+    </div>
+
+</div>
+<div class="row">
+
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+    </div>
+
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+        <form (ngSubmit)="guardarPrescripcion()" [formGroup]="formPrescripcion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Indicación General
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <label>Dieta:</label>
+                            <select [(ngModel)]="prescripcion.dieta" formControlName="dieta" class="form-control">
+                                <option value="0">NADA</option>
+                                <option value="1">HIPOSODICA</option>
+                                <option value="2">PARA DIABETICO</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <label>Cabecera (Grados):</label>
+                            <input type="number" [(ngModel)]="prescripcion.cabecera_grados" formControlName="cabecera_grados" class="form-control">
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <label>Control Glucemia:</label>
+                            <select type="text" [(ngModel)]="prescripcion.controles_glucemia" formControlName="controles_glucemia" class="form-control">
+                                                        <option value="0"> HORARIA</option>
+                                                        <option value="1"> CADA 2 HORAS</option>
+                                                        <option value="2"> CADA 4 HORAS</option>
+                                                        <option value="3"> CADA 6 HORAS</option>
+                                    </select>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <input type="checkbox" [(ngModel)]="prescripcion.kinesiologia_motora" formControlName="kinesiologia_motora"> AKM
+
+                            <input type="checkbox" [(ngModel)]="prescripcion.kinesiologia_respiratoria" formControlName="kinesiologia_respiratoria"> AKR
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal fade" id="modal-id">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Listado Farmacos.</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <input #buscar [(ngModel)]="farmacoForm.buscar" formControlName="farmacoBuscar" (keyup)="buscarFarmaco(buscar.value)" type="text" class="form-control">
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <select [(ngModel)]="farmacoForm.farmaco_activo" formControlName="farmacoActivo" class="form-control">
+                                        <option *ngFor="let farmaco of lista_farmacos" [value]="farmaco._id">{{farmaco.elemento}} ({{farmaco.potencia}}) | {{farmaco.forma_farmaceutica}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <input type="text" [(ngModel)]="farmacoForm._id" formControlName="farmacoId">
+                                <label>Cantidad</label>
+                                <input type="number" [(ngModel)]="farmacoForm.cantidad" formControlName="farmacoCantidad" class="form-control">
+                                <label>Frecuencia</label>
+                                <select [(ngModel)]="farmacoForm.frecuencia" formControlName="farmacoFrecuencia" class="form-control">
+                                        <option value="0">A DEMANDA</option>
+                                        <option value="1">CADA 1 HORA</option>
+                                        <option value="2">CADA 2 HORA</option>
+                                        <option value="3">CADA 3 HORA</option>
+                                        <option value="4">CADA 4 HORA</option>
+                                        <option value="5">CADA 6 HORA</option>
+                                        <option value="6">CADA 8 HORA</option>
+                                        <option value="7">CADA 12 HORAS</option>
+                                        <option value="8">CADA 24 HORA</option>
+                                    </select>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <button type="button" class="btn btn-default" (click)="guardarFarmaco(farmacoForm.farmaco_activo)">Agrega Farmaco</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <input type="hidden" [(ngModel)]="prescripcion._id" formControlName="_id" class="form-control">
+            <input type="hidden" [(ngModel)]="prescripcion.internacion" formControlName="internacion" class="form-control">
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Farmacos</h3>
+                </div>
+                <div class="panel-body">
+                    <a class="btn btn-sm btn-primary pull-right" data-toggle="modal" href='#modal-id'><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th>Elemento</th>
+                                <th>Cantidad</th>
+                                <th>Frecuencia</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let farmaco of prescripcion.farmacos" [hidden]="farmaco.eliminado">
+                                <td>{{farmaco.item.elemento}} ({{farmaco.item.potencia}}) | {{farmaco.item.forma_farmaceutica}}</td>
+                                <td> {{farmaco.cantidad}}</td>
+                                <td> {{farmaco.frecuencia}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning" (click)="editarFarmaco(farmaco)">
+                                        <i class="fa fa-edit" aria-hidden="true"></i>
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger" (click)="borrarFarmaco(farmaco)">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </button>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+                <div class="panel-footer">
+                    <label>nota</label>
+                    <textarea [(ngModel)]="prescripcion.nota" formControlName="nota" class="form-control"></textarea>
+                </div>
+
+
+            </div>
+
+            <button class="btn btn-success" type="button" (click)="validarPrescripcion()">Validar</button>
+
+            <button class="btn btn-primary"><i class="fa fa-save" aria-hidden="true"></i> Guardar</button>
+
+        </form>
+    </div>
+
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+    </div>
+
+</div>
