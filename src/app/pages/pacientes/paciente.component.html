@@ -43,7 +43,7 @@
                             <input [(ngModel)]="paciente.nro_documento" formControlName="nro_documento" name="nro_documento" class="form-control" type="text">
 
                             <label>Nacionalidad</label>
-                            <select [(ngModel)]=" paciente.nacionalidad._id " formControlName="nacionalidad" name="nacionalidad" class="form-control">
+                            <select [(ngModel)]="paciente.nacionalidad._id" formControlName="nacionalidad" name="nacionalidad" class="form-control">
                         
                         <option *ngFor="let pais of paises" value="{{pais._id}}">{{pais.Pais}}</option>
                     </select>

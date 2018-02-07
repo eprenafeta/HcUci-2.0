@@ -19,7 +19,10 @@ import { FormArray } from '@angular/forms/src/model';
 export class PrescripcionComponent implements OnInit {
     formPrescripcion: FormGroup;
     farmaco = [];
-    farmacoForm = [];
+    farmacoForm = { cantidad: Number,
+                    frecuencia: Number,
+                    farmaco_activo: String,
+                    _id: String};
     array_prescripciones = [];
     lista_farmacos = [];
     prescripcion = new Prescripcion('', '', '', '', '', '', '', '', '', []);
@@ -111,7 +114,7 @@ export class PrescripcionComponent implements OnInit {
         this.formPrescripcion.value.cabecera_grados,
         this.formPrescripcion.value.controles_glucemia,
         this.formPrescripcion.value.nota,
-        JSON.stringify(this.prescripcion.farmacos)
+        [JSON.stringify(this.prescripcion.farmacos)]
       );
       console.log(prescripcion);
 
@@ -139,6 +142,7 @@ export class PrescripcionComponent implements OnInit {
 
   editarFarmaco(farmaco) {
     this.buscarFarmaco(farmaco.item.elemento);
+    
     this.farmacoForm.cantidad = farmaco.cantidad;
     this.farmacoForm.frecuencia = farmaco.frecuencia;
     this.farmacoForm.farmaco_activo = farmaco.item._id;

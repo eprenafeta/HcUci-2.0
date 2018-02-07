@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-import { Internacion } from '../../models/internacion.model';
+import { InternacionIngreso } from '../../models/internacion.model';
 import { Paciente } from '../../models/paciente.model';
+import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class InternacionService {
 
@@ -31,8 +32,17 @@ export class InternacionService {
       }
     ));
   }
+    guardaIngreso(internacion) {
+      let url = 'http://localhost:3000/internacion/'; 
+      if (internacion._id) {
+       
+      } else {
+        console.log(internacion);
+        return this.http.post(url, internacion);
+      }
+    }
 
-   guardarInternacion(internacion: Internacion) {
+    guardarInternacion(internacion: InternacionIngreso) {
     console.log(internacion);
     if (internacion._id) {
       console.log('acutalizando');

@@ -18,3 +18,11 @@ export class Paciente {
         public domicilio: string
     ) { }
 }
+
+export class Antecedente {
+    constructor (
+        public IdPaciente: string,
+        public IdCie10: string,
+        public signal_patch: string
+    ) { }
+}

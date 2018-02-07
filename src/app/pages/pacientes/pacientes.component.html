@@ -34,6 +34,9 @@
                                 {{paciente.apellidos}}, {{paciente.nombres }}, {{paciente.nacionalidad.Pais}}({{paciente.nacionalidad.Codigo}})
                             </td>
                             <td>
+
+                                <button [routerLink]="['/paciente_dashboard', paciente._id]" type="button" class="btn btn-warning"><i class="fa fa-stethoscope" aria-hidden="true"></i>         </button>
+
                                 <button [routerLink]="['/paciente', paciente._id]" type="button" class="btn btn-info"> <i class="fa fa-edit" aria-hidden="true"></i> </button>
 
                                 <button (click)="borrarPaciente(paciente._id)" type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>

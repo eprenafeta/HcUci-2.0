@@ -1,6 +1,5 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { swal } from 'sweetalert';
 import { InternacionService, PacienteService } from '../../services/service.index';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -25,7 +24,7 @@ export class InternacionComponent implements OnInit {
   
   formInternacion: FormGroup;
   // tslint:disable-next-line:whitespace
-  internacion = new Internacion();
+  internacion = new Internacion('',null ,'','','','','',null ,'','','','');
   variables: String;
   constructor(public _internacionService: InternacionService,
               public _pacienteService: InternacionService,
@@ -81,7 +80,7 @@ export class InternacionComponent implements OnInit {
   }
 
   guardaInternacion() {
-    const internacion = new Internacion(
+    const internacion = new InternacionIngreso(
       this.formInternacion.value._id,
       this.formInternacion.value.ingreso_fecha,
       this.formInternacion.value.ingreso_enfermedad_actual,

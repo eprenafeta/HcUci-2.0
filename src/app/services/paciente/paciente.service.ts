@@ -52,6 +52,7 @@ export class PacienteService {
     let url = 'http://localhost:3000/paciente/' + id;
     return this.http.get(url).pipe(map(
       (resp: any) => {
+        console.log(resp);
         return resp;
       }
     ));
@@ -79,6 +80,15 @@ export class PacienteService {
       }
     ));
 
+  }
+
+  patchAntecedente(antecedente) {
+    let url = 'http://localhost:3000/paciente/cie10';
+    return this.http.patch(url, antecedente).pipe(map( 
+      resp => {
+        return resp;
+      }
+    ));
   }
 
 }
