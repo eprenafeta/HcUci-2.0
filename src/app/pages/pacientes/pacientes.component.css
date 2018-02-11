@@ -1,0 +1,17 @@
+div.card {
+    width: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: left;
+    margin-left: 8px;
+    margin-top: 10px;
+}
+
+div.card-body {
+    text-align: left;
+    text-decoration-color: blue;
+    font-size: small;
+}
+
+.table td {
+    vertical-align: top;
+}

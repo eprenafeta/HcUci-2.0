@@ -4,7 +4,7 @@ import { InternacionService, PacienteService } from '../../services/service.inde
 import { Router, ActivatedRoute } from '@angular/router';
 
 // IMPORTA MODELO
-import { Internacion } from '../../models/internacion.model';
+import { InternacionIngreso } from '../../models/internacion.model';
 import { map } from 'rxjs/operators';
 import { Paciente } from '../../models/paciente.model';
 import { Cie10} from '../../models/cie10.model';
@@ -24,7 +24,7 @@ export class InternacionComponent implements OnInit {
   
   formInternacion: FormGroup;
   // tslint:disable-next-line:whitespace
-  internacion = new Internacion('',null ,'','','','','',null ,'','','','');
+  internacion = new InternacionIngreso('',null ,'','','','','',null ,'','','','');
   variables: String;
   constructor(public _internacionService: InternacionService,
               public _pacienteService: InternacionService,
@@ -51,7 +51,7 @@ export class InternacionComponent implements OnInit {
                   });
                }
 
-  ngOnInit() {
+  ngOnInit() { 
     this.formInternacion = new FormGroup({
       _id: new FormControl,
       ingreso_fecha: new FormControl,

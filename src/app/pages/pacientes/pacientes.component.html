@@ -1,58 +1,42 @@
 <div class="row">
 
-
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-        <button [routerLink]="['/paciente','nuevo']" type="button" class="btn btn-primary"><i class="fa fa-user" aria-hidden="true"></i> Nuevo Paciente </button>
-    </div>
-
-
-
-
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <div class="input-group">
-            <span class="input-group-btn">
-                 <button class="btn btn-default" type="button">Buscar</button>
-            </span>
-            <input #input (keyup)="buscarPacientes(input.value)" type="text" class="form-control" placeholder="Buscar...">
+    <div class="row">
+        <div class="col-4">
+            <button [routerLink]="['/paciente','nuevo']" type="button" class="btn btn-primary"><i class="fa fa-user" aria-hidden="true"></i> Nuevo Paciente </button>
         </div>
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <h3 class="panel-title">Pacientes</h3>
-            </div>
-            <div class="panel-body">
-
-                <table class="table table-condensed table-hover">
-                    <thead>
-                        <tr>
-                            <th>Pacientes</th>
-                            <th>Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let paciente of pacientes">
-                            <td>
-                                {{paciente.apellidos}}, {{paciente.nombres }}, {{paciente.nacionalidad.Pais}}({{paciente.nacionalidad.Codigo}})
-                            </td>
-                            <td>
-
-                                <button [routerLink]="['/paciente_dashboard', paciente._id]" type="button" class="btn btn-warning"><i class="fa fa-stethoscope" aria-hidden="true"></i>         </button>
-
-                                <button [routerLink]="['/paciente', paciente._id]" type="button" class="btn btn-info"> <i class="fa fa-edit" aria-hidden="true"></i> </button>
-
-                                <button (click)="borrarPaciente(paciente._id)" type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
+        <div class="col-8">
+            <div class="input-group">
+                <span class="input-group-btn">
+                                             <button class="btn btn-default" type="button">Buscar</button>
+                                        </span>
+                <input #input (keyup)="buscarPacientes(input.value)" type="text" class="form-control" placeholder="Buscar...">
             </div>
         </div>
     </div>
 
+    <div class="row">
+        <div *ngFor="let paciente of pacientes" class="card" style="max-width: 18rem;">
+            <div class="card-header"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{paciente.apellidos}}, {{paciente.nombres}}
 
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text">
+                    <li>DNI: {{paciente.nro_documento}}</li>
+                    <li>Cobertura: {{paciente.cobertura.nombre}}</li>
+                </p>
+            </div>
+            <div class="card-footer">
+                <div class="pull-right"> <button [routerLink]="['/paciente_dashboard', paciente._id]" type="button" class="btn btn-warning btn-sm"><i class="fa fa-stethoscope" aria-hidden="true"></i>         </button>
+
+                    <button [routerLink]="['/paciente', paciente._id]" type="button" class="btn btn-info btn-sm"> <i class="fa fa-edit" aria-hidden="true"></i> </button>
+
+                    <button (click)="borrarPaciente(paciente._id)" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
 
     </div>
+
 
 </div>

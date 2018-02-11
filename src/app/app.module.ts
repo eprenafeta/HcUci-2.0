@@ -28,6 +28,7 @@ import { ServiceModule } from './services/service.module';
 import { PacienteModule } from './modules/paciente/paciente.module';
 import { PrescripcionComponent } from './pages/internacion/prescripcion/prescripcion.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DashboardInternacionComponent} from './pages/internacion/dashboard/dashboard.component';
 import { PagesComponent } from './pages/pages.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationBuilder } from '@angular/platform-browser/animations/src/animation_builder';
@@ -45,6 +46,7 @@ import { BrowserAnimationBuilder } from '@angular/platform-browser/animations/sr
     HeaderComponent,
     SidebarComponent,
     DashboardComponent,
+    DashboardInternacionComponent,
     PacienteDashboardComponent,
     PacienteComponent,
     InternacionComponent,

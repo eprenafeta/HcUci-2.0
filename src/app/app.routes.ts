@@ -7,6 +7,7 @@ import { PrescripcionComponent } from './pages/internacion/prescripcion/prescrip
 import { PacienteDashboardComponent } from './pages/pacientes/dashboard/dashboard.component';
 import { PagesComponent } from './pages/pages.component';
 import { LoginComponent } from './login/login.component';
+import { DashboardInternacionComponent } from './pages/internacion/dashboard/dashboard.component';
 
 
 
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
                      {path: 'paciente_dashboard/:id', component: PacienteDashboardComponent },
                      {path: 'pacientes' , component: PacientesComponent},
                      {path: 'paciente/:id', component: PacienteComponent},
+                     {path: 'internacion_dashboard/:id', component: DashboardInternacionComponent},
                      {path: 'internacion/:modo', component: InternacionComponent},
                      {path: 'internacion/:modo/:id', component: InternacionComponent},
                      {path: 'prescripcion/:id', component: PrescripcionComponent}

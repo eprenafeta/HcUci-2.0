@@ -2,96 +2,22 @@
 <html lang="en">
 
 <head>
+    <title></title>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <title>Hcuci v2.0</title>
-    <base href="/">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-signin-client_id" content="756143612847-9v8958at02vnemruo6lbb3s84psi3h0r.apps.googleusercontent.com">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <!-- Vendor styles -->
-    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.css" />
-
-    <link rel="stylesheet" href="assets/vendor/animate.css/animate.css" />
-    <link rel="stylesheet" href="assets/vendor/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="assets/vendor/select2-3.5.2/select2.css" />
-    <link rel="stylesheet" href="assets/vendor/select2-bootstrap/select2-bootstrap.css" />
-    <link rel="stylesheet" href="assets/vendor/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" />
-
-
-
-    <!-- App styles -->
-    <link rel="stylesheet" href="assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
-    <link rel="stylesheet" href="assets/fonts/pe-icon-7-stroke/css/helper.css" />
-    <link rel="stylesheet" href="assets/styles/style.css">
-    <link rel="stylesheet" href="assets/styles/picker.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 
-<body class="fixed-navbar sidebar-scroll">
-    <div class="content">
-        <app-root></app-root>
-    </div>
-    <!-- Script Google Auth -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-
-
-    <!-- Vendor scripts -->
-    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="assets/vendor/jquery-ui/jquery-ui.min.js"></script>
-    <script src="assets/vendor/slimScroll/jquery.slimscroll.min.js"></script>
-    <script src="assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="assets/vendor/jquery-flot/jquery.flot.js"></script>
-    <script src="assets/vendor/jquery-flot/jquery.flot.resize.js"></script>
-    <script src="assets/vendor/jquery-flot/jquery.flot.pie.js"></script>
-    <script src="assets/vendor/flot.curvedlines/curvedLines.js"></script>
-    <script src="assets/vendor/jquery.flot.spline/index.js"></script>
-
-    <script src="assets/vendor/iCheck/icheck.min.js"></script>
-    <script src="assets/vendor/peity/jquery.peity.min.js"></script>
-    <script src="assets/vendor/sparkline/index.js"></script>
-    <script src="assets/vendor/select2-3.5.2/select2.min.js"></script>
-
-
-    <!-- App scripts -->
-    <script src="assets/scripts/homer.js"></script>
-    <script src="assets/scripts/charts.js"></script>
-    <script src="assets/vendor/nestable/jquery.nestable.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('.js-example-basic-multiple').select2();
-        });
-    </script>
-    <script>
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-            var id_token = googleUser.getAuthResponse().id_token;
-
-            console.log('Token: ' + id_token);
-        }
-    </script>
-    <script>
-        function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function() {
-                console.log('User signed out.');
-            });
-        }
-    </script>
-    <script>
-        $(document).ready(function() {
-
-            $('.dd').nestable({ /* config options */ });
-            $('.dd').nestable('collapseAll');
-
-        });
-    </script>
-
+<body>
+    <app-root></app-root>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 
 </html>

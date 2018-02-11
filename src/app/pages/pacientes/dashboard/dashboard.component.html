@@ -1,61 +1,53 @@
 <div class="row">
-    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">Datos Básicos</h3>
-            </div>
-            <div class="panel-body">
-                <table class="table table-striped table-hover">
-                    <tbody>
-                        <tr>
-                            <td> <label>Apellidos y nombres</label></td>
-                            <td>{{paciente.apellidos}}, {{paciente.nombres}}</td>
-                        </tr>
-                        <tr>
-                            <td><label>Fecha Nacimiento</label></td>
-                            <td>{{paciente.fnac}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <div class="col-5">
+        <div class="card">
+            <div class="card-header ">Datos</div>
+            <img class="card-img-top" alt="">
+            <div class="container">
+                {{paciente.apellidos}}, {{paciente.nombres}} {{paciente.fnac}}
             </div>
         </div>
     </div>
 
-    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">Antecedentes
-                    <h1><a class="btn btn-sm btn-primary" data-toggle="modal" href='#modalAntecedentes'><i class="fa fa-plus-circle" aria-hidden="true"></i></a> <i class="push-right" dropDirective class="fa fa-trash-o" aria-hidden="true"></i></h1>
-                </h3>
+    <div class="col-7">
+
+
+        <div class="card">
+            <div class="card-header">
+                <a data-toggle="modal" href='#modalAntecedentes'><i class="fa fa-plus fa-fw"  aria-hidden="true"></i></a> <i class="push-right" dropDirective class="fa fa-trash" aria-hidden="true"></i>
             </div>
-            <div class="panel-body">
-
+            <div class="card-body">
                 <div class="dd">
                     <ol class="dd-list">
-                        <li class="dd-item" data-id="1" *ngFor="let antecedente of paciente.antecedentes" [dragDirective]='antecedente' (releaseDrop)="borrarAntecedente(antecedente._id)">
-                            [{{antecedente.codigo}}] - {{antecedente.descripcion}}
-                        </li>
+                        <div class="dd-item" data-id="1" *ngFor="let antecedente of paciente.antecedentes" [dragDirective]='antecedente' (releaseDrop)="borrarAntecedente(antecedente._id)">
+                            [{{antecedente.codigo}}] - {{antecedente.descripcion}} <i class="fa fa-times fa-fw" (click)="borrarAntecedente(antecedente._id)" aria-hidden="true"></i>,
+                        </div>
                     </ol>
                 </div>
             </div>
 
+
         </div>
     </div>
+</div>
 
 
 
 
-    <div class="row">
-        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
 
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Internaciones</h3>
-                </div>
-                <div class="panel-body">
+<div class="row">
 
-                    <table class="table table-striped table-hover">
+    <div class="col-12">
+
+        <div class="card">
+            <div class="card-header">
+                <h6 class="panel-title">Internaciones</h6>
+            </div>
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
                         <thead>
                             <tr>
                                 <th>Fecha</th>
@@ -73,115 +65,117 @@
                                 <td>{{internacion.ingreso_motivo_internacion}}</td>
                                 <td>[{{internacion.ingreso_cie10.codigo}}]{{internacion.ingreso_cie10.descripcion}}</td>
                                 <td class="pull-right">
-
-                                    <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></button>
-
-                                    <button type="button" class="btn btn-sm btn-info"><i class="fa fa-medkit" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-edit fa-fw" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-info btn-sm"><i class="fa fa-medkit fa-fw" aria-hidden="true"></i> </button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
-            </div>
 
+            </div>
         </div>
+
     </div>
 
+</div>
 
 
-    <div class="modal fade" id="modalAntecedentes">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Antecedente</h4>
-                </div>
-                <div class="modal-body">
 
-                    <div class="row">
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                            <input type="text" #input_antecedente ng-event (keyup)="cargaCie10s(input_antecedente.value)" class="form-control" placeholder="Busqueda CIE10 ....">
-                        </div>
+<div class="modal fade" id="modalAntecedentes">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Antecedente</h4>
+            </div>
+            <div class="modal-body">
 
-                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                            <select #cie10Seleccionado class="form-control" style="width:100%">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <input type="text" #input_antecedente ng-event (keyup)="cargaCie10s(input_antecedente.value)" class="form-control" placeholder="Busqueda CIE10 ....">
+                    </div>
+
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                        <select #cie10Seleccionado class="form-control" style="width:100%">
                                 <option value="{{cie10._id}}" *ngFor="let cie10 of cie10s">{{cie10.descripcion}}</option>
                         </select>
-                        </div>
-
                     </div>
 
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button (click)="nuevoAntecedente(cie10Seleccionado.value)" class="btn btn-primary">Guardar</button>
-                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button (click)="nuevoAntecedente(cie10Seleccionado.value)" class="btn btn-primary">Guardar</button>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="modal fade" id="modalNuevaInternacion">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Nueva Internacion</h4>
-                </div>
-                <div class="modal-body">
-                    <form [formGroup]="formInternacionIngreso" (ngSubmit)="guardarIngreso()">
-                        <input type="hidden" [(ngModel)]="_id" formControlName="_id" class="form-control">
-                        <label>Cama:</label>
-                        <select formControlName="ingreso_cama" class="form-control">     
+
+
+<div class="modal fade" id="modalNuevaInternacion">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Nueva Internacion</h4>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formInternacionIngreso" (ngSubmit)="guardarIngreso()">
+                    <input type="hidden" [(ngModel)]="_id" formControlName="_id" class="form-control">
+                    <label>Cama:</label>
+                    <select formControlName="ingreso_cama" class="form-control">     
                             <option *ngFor="let cama of datos_institucion.camas" value="{{cama._id}}">{{cama.nombre}}</option>
                         </select>
-                        <div class="row">
+                    <div class="row">
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <input type="text" #inputIngresoCie10 ng-event (keyup)="cargaCie10s(inputIngresoCie10.value)" class="form-control" placeholder="Busqueda CIE10 ....">
                         </div>
-
-                        <div class="row">
-
-                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                <input type="text" #inputIngresoCie10 ng-event (keyup)="cargaCie10s(inputIngresoCie10.value)" class="form-control" placeholder="Busqueda CIE10 ....">
-                            </div>
-                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                <select #cie10Seleccionado [(ngModel)]="ingreso_cie10" formControlName="ingreso_cie10" class="form-control" style="width:100%">
+                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                            <select #cie10Seleccionado [(ngModel)]="ingreso_cie10" formControlName="ingreso_cie10" class="form-control" style="width:100%">
                                     <option value="{{cie10._id}}" *ngFor="let cie10 of cie10s">{{cie10.descripcion}}</option>
                                 </select>
-                            </div>
-                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-
-                                <label> Fecha</label>
-                                <input style="z-index: 0" [owlDateTime]="dt2" placeholder="Fecha y hora internacion" [(ngModel)]="ingreso_fecha" formControlName="ingreso_fecha" class="form-control">
-                                <span [owlDateTimeTrigger]="dt2"><i class="fa fa-calendar"></i></span>
-                                <owl-date-time #dt2></owl-date-time>
-
-                            </div>
-                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                <label>SAP3: </label><input type="text" [(ngModel)]="ingreso_saps3" formControlName="ingreso_saps3" class="form-control">
-
-                            </div>
-                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                <label>APACHE2: </label><input type="text" [(ngModel)]="ingreso_apache2" formControlName="ingreso_apache2" class="form-control">
-
-                            </div>
                         </div>
-                        <div class="row">
-                            <label>Enfermedad Actual: </label>
-                            <textarea type="text" [(ngModel)]="ingreso_enfermedad_actual" formControlName="ingreso_enfermedad_actual" class="form-control"></textarea>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+                            <label> Fecha</label>
+                            <input style="z-index: 0" [owlDateTime]="dt2" placeholder="Fecha y hora internacion" [(ngModel)]="ingreso_fecha" formControlName="ingreso_fecha" class="form-control">
+                            <span [owlDateTimeTrigger]="dt2"><i class="fa fa-calendar"></i></span>
+                            <owl-date-time #dt2></owl-date-time>
 
                         </div>
-                        <div class="row">
-                            <label>Motivo Internacion: </label>
-                            <textarea type="text" [(ngModel)]="ingreso_motivo_internacion" formControlName="ingreso_motivo_internacion" class="form-control"></textarea>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <label>SAP3: </label><input type="text" [(ngModel)]="ingreso_saps3" formControlName="ingreso_saps3" class="form-control">
+
                         </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <label>APACHE2: </label><input type="text" [(ngModel)]="ingreso_apache2" formControlName="ingreso_apache2" class="form-control">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label>Enfermedad Actual: </label>
+                        <textarea type="text" [(ngModel)]="ingreso_enfermedad_actual" formControlName="ingreso_enfermedad_actual" class="form-control"></textarea>
+
+                    </div>
+                    <div class="row">
+                        <label>Motivo Internacion: </label>
+                        <textarea type="text" [(ngModel)]="ingreso_motivo_internacion" formControlName="ingreso_motivo_internacion" class="form-control"></textarea>
+                    </div>
 
 
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button class="btn btn-primary" (click)="guardarIngreso()">Guardar</button>
-                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-primary" (click)="guardarIngreso()">Guardar</button>
             </div>
         </div>
     </div>
+</div>
