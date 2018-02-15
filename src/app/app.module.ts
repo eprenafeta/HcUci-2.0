@@ -32,6 +32,7 @@ import { DashboardInternacionComponent} from './pages/internacion/dashboard/dash
 import { PagesComponent } from './pages/pages.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationBuilder } from '@angular/platform-browser/animations/src/animation_builder';
+import { EvolucionComponent } from './pages/internacion/dashboard/componentes/evolucion/evolucion.component';
 
 
 
@@ -52,7 +53,8 @@ import { BrowserAnimationBuilder } from '@angular/platform-browser/animations/sr
     InternacionComponent,
     PrescripcionComponent,
     PagesComponent,
-    LoginComponent
+    LoginComponent,
+    EvolucionComponent
   ],
   imports: [
     BrowserModule,

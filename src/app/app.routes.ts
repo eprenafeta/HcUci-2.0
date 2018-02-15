@@ -12,7 +12,7 @@ import { DashboardInternacionComponent } from './pages/internacion/dashboard/das
 
 
 const appRoutes: Routes = [
-    {    path: '',
+    {    path: '', 
          component: PagesComponent,
          children: [{path: 'dashboard', component: DashboardComponent},
                      {path: 'paciente_dashboard/:id', component: PacienteDashboardComponent },

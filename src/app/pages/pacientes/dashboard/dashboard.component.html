@@ -11,11 +11,10 @@
 
 
     <div class="col-7">
-
-
         <div class="card">
             <div class="card-header">
-                <a data-toggle="modal" href='#modalAntecedentes'><i class="fa fa-plus fa-fw"  aria-hidden="true"></i></a> <i class="push-right" dropDirective class="fa fa-trash" aria-hidden="true"></i>
+                Antecedentes
+                <div class="pull-right"> <a data-toggle="modal" href='#modalAntecedentes'><i class="fa fa-plus fa-fw"  aria-hidden="true"></i></a> <i class="push-right" dropDirective class="fa fa-trash" aria-hidden="true"></i></div>
             </div>
             <div class="card-body">
                 <div class="dd">
@@ -39,10 +38,14 @@
 <div class="row">
 
     <div class="col-12">
-
         <div class="card">
             <div class="card-header">
-                <h6 class="panel-title">Internaciones</h6>
+                Internaciones
+                <div class="card-actions pull-right">
+                    <a class="" data-action="collapse"><i class="ti-minus"></i></a>
+                    <a class="btn-minimize" data-action="expand"><i class="mdi mdi-arrow-expand"></i></a>
+                    <a class="btn-close" data-action="close"><i class="ti-close"></i></a>
+                </div>
             </div>
             <div class="card-body">
 
@@ -65,8 +68,8 @@
                                 <td>{{internacion.ingreso_motivo_internacion}}</td>
                                 <td>[{{internacion.ingreso_cie10.codigo}}]{{internacion.ingreso_cie10.descripcion}}</td>
                                 <td class="pull-right">
-                                    <button type="button" class="btn btn-info btn-sm"> <i class="fa fa-edit fa-fw" aria-hidden="true"></i></button>
-                                    <button type="button" class="btn btn-info btn-sm"><i class="fa fa-medkit fa-fw" aria-hidden="true"></i> </button>
+                                    <a name="" id="" class="btn btn-info btn-sm" href="#/internacion_dashboard/{{internacion._id}}" role="button"> <i class="fa fa-medkit fa-fw" aria-hidden="true"></i></a>
+                                    <a name="" id="" class="btn btn-info btn-sm" href="#" role="button"> <i class="fa fa-edit fa-fw" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                         </tbody>

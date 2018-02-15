@@ -21,27 +21,23 @@ export class InternacionComponent implements OnInit {
   primer_registroIngresoCie10 = [];
   primer_registroEpicrisisCie10 = [];
   cie10s = [];
-  
   formInternacion: FormGroup;
   // tslint:disable-next-line:whitespace
-  internacion = new InternacionIngreso('',null ,'','','','','',null ,'','','','');
+  internacion = new InternacionIngreso('',null ,'','','','','',null , '');
   variables: String;
   constructor(public _internacionService: InternacionService,
               public _pacienteService: InternacionService,
               public router: Router,
-              
               public activatedRoute: ActivatedRoute ) {
                     activatedRoute.params.subscribe(params => {
                       const id = params['id'];
                       const modo = params['modo'];
-    
                       if (id !== 'nuevo') {
                         this.cargarInternacion(id);
                         console.log ('no entra a uno nuevo');
                       } else {
                         console.log('es uno nuevo');
-                        
-                        //this.internacion.ingreso_fecha = d.getDate()+d.getMonth()+d.getFullYear()+d.getMinutes(); 
+                      // this.internacion.ingreso_fecha = d.getDate()+d.getMonth()+d.getFullYear()+d.getMinutes(); 
                       }
                       if (modo === 'ingreso'){
                         this.ingreso = true;
@@ -87,12 +83,7 @@ export class InternacionComponent implements OnInit {
       this.formInternacion.value.ingreso_motivo_internacion,
       this.formInternacion.value.ingreso_saps3,
       this.formInternacion.value.ingreso_apache2,
-      this.formInternacion.value.ingreso_cie10,
-      this.formInternacion.value.epicrisis_fecha,
-      this.formInternacion.value.epicrisis_detalle,
-      this.formInternacion.value.epicrisis_cie10,
-      this.formInternacion.value.epicrisis_complicaciones,
-      this.formInternacion.value.epicrisis_estado
+      this.formInternacion.value.ingreso_cie10,'',''
     );
 
     this._internacionService.guardarInternacion(internacion).subscribe((resp: any) => { this.internacion = resp.internacion;

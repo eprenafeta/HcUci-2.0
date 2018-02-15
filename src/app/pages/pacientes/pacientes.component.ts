@@ -17,7 +17,9 @@ export class PacientesComponent implements OnInit {
 
   ngOnInit() {
     this.cargarPacientes();
-  }
+  } 
+
+  
 
   buscarPacientes(variable: String) {
     this._pacienteService.buscarPaciente(variable).subscribe(pacientes => {
